@@ -3,12 +3,18 @@ from streamlit_lottie import st_lottie
 import json
 st.set_page_config(layout="wide")
 from PIL import Image
+import os
 
+def load_lottie_file(filename):
+    # Get the absolute path to the root of the project
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(current_dir, filename)  # Construct the path
 
-def load_lottie_file(filepath: str):
-    with open(filepath, "r") as f:
+    # Debug output (optional)
+    print("Looking for JSON file at:", filepath)
+
+    with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
-
 
 animation = load_lottie_file("teach.json")
 
