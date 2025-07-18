@@ -3,10 +3,16 @@ from streamlit_lottie import st_lottie
 import json
 st.set_page_config(layout="wide")
 from PIL import Image
+import os
 
-danka = Image.open("d.png")
-martina = Image.open("mt.png")
-marika = Image.open("mg.png")
+def load_image(filename):
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(current_dir, filename)
+    return Image.open(filepath)
+
+danka = load_image("d.png")
+martina = load_image("mt.png")
+marika = load_image("mg.png")
 
 
 st.page_link("Дома.py", label="Дома")
